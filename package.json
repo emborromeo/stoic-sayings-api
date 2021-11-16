@@ -4,7 +4,7 @@
   "description": "creating api test",
   "main": "script.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node script.js",
     "dev": "nodemon script.js"
   },
   "author": "emborromeo",
