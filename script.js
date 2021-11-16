@@ -8,7 +8,7 @@ app.use(express.json());
 
 //Request Handlers
 app.get('/', (req, res) => {
-    res.send('Welcome to Stoic Sayings API');
+    res.sendFile(__dirname + "/index.html");
 });
 
 //GET all 
