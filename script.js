@@ -49,6 +49,12 @@ app.get('/api/v1/zeno', cors(), (req,res)=> {
     res.send(zeno);
 });
 
+//GET random
+app.get('/api/v1/random', cors(),  (req,res)=> {
+    const randomSaying = sayings[Math.floor(Math.random() * sayings.length)]
+    res.send(randomSaying);
+});
+
 //CREATE Request Handler
 
 /*

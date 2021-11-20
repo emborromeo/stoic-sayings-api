@@ -114,7 +114,7 @@
                 <h5 style="text-decoration: underline;">Documentation</h5>
                 
                 <div class="get-card">
-                    <button type="button" id="doc-btn" class="btn btn-dark">GET All</button> <br>
+                    <a href="https://stoic-api.herokuapp.com/api/v1/sayings"> <button type="button" id="doc-btn" class="btn btn-dark">GET All</button></a> <br>
                     <p>
                         Description:  This returns all the stoic sayings <br>
                         Method: GET <br>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="get-card">
-                    <button type="button" id="doc-btn" class="btn btn-dark">GET by ID</button> <br>
+                   <a href="https://stoic-api.herokuapp.com/api/v1/sayings/1"><button type="button" id="doc-btn" class="btn btn-dark">GET by ID</button></a>  <br>
                     <p>
                         Description:  This returns a specific stoic saying according to the id <br>
                         Method: GET <br>
@@ -133,12 +133,21 @@
                 </div>
 
                 <div class="get-card" style="margin-bottom: 5rem;">
-                    <button type="button" id="doc-btn" class="btn btn-dark">GET by Author</button> <br>
+                    <a href="https://stoic-api.herokuapp.com/api/v1/aurelius"><button type="button" id="doc-btn" class="btn btn-dark">GET by Author</button></a> <br>
                     <p>
                         Description:  This returns all the sayings by each author. <br>
                         We have Aurelius, Seneca &  Epictetus <br>
                         Method: GET <br>
                         URL:  https://stoic-api.herokuapp.com/api/v1/:author <br>
+                    </p>
+                </div>
+
+                <div class="get-card" style="margin-bottom: 5rem;">
+                    <a href="https://stoic-api.herokuapp.com/api/v1/aurelius"><button type="button" id="doc-btn" class="btn btn-dark">GET random</button></a> <br>
+                    <p>
+                        Description:  This returns a random saying <br>
+                        Method: GET <br>
+                        URL:  https://stoic-api.herokuapp.com/api/v1/random <br>
                     </p>
                 </div>
               
@@ -165,14 +174,18 @@
 
 
     <script>
-        const stoicURL=`https://stoic-api.herokuapp.com/api/v1/sayings`;
+        const stoicURL=`https://stoic-api.herokuapp.com/api/v1/random`;
 
         fetch(stoicURL)
         .then(response => response.json())
         .then(data => {
         
         console.log(data);
+        console.log(data.saying);
 
+
+        document.getElementById("#quote").innerHTML = data.saying;
+        document.getElementById("#author").innerHTML = data.author;
 
       });
     </script>
