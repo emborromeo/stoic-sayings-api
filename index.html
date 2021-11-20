@@ -27,10 +27,12 @@
         }
         #quote{
             font-family: 'Times New Roman', Times, serif;
+            font-size: 3em;
             font-weight: bold;
         }
         #author{
             color: #b4954d;
+            font-size: 1.2em;
         }
        #doc-btn{
             background-color: #b4913e;
@@ -55,11 +57,12 @@
         .main-doc{
             margin-top:25rem;
         }
-     
+        .get-card{
+            margin: -50px 0;
+        }
         ul {
             list-style-type: none;
             margin-bottom:3rem;
-            margin-left: -3rem;
             padding: 0;
             text-align: center;
             
@@ -75,7 +78,9 @@
             padding: 5px;
             text-decoration: none;
             position: relative;
-
+        }
+        li a:hover{
+            color:#fff;
         }
     </style>
     
@@ -95,11 +100,12 @@
     <section id="main">
         <center>
              <div class="quote-main">
-                <h1 id="quote"></h1>
-                <h5 id="author"></h5>
+                <span id="quote"></span> <br>
+                <h5 id="author"></h5> 
+                <h6 id="source"></h6>
              </div>        
              
-             <button type="button" id="share-btn" class="btn btn-dark">Share</button> <br>
+            <a id="share-link" target="_blank"> <button type="button" id="share-btn" class="btn btn-dark">Share</button></a> <br>
 
             <a href="#documentation" id="down-doc"><i class="bi bi-chevron-double-down"></i></a> 
 
@@ -114,7 +120,7 @@
                 <h5 style="text-decoration: underline;">Documentation</h5>
                 
                 <div class="get-card">
-                    <a href="https://stoic-api.herokuapp.com/api/v1/sayings"> <button type="button" id="doc-btn" class="btn btn-dark">GET All</button></a> <br>
+                    <a href="https://stoic-api.herokuapp.com/api/v1/sayings" target="_blank">  <button type="button" id="doc-btn" class="btn btn-dark">GET All</button></a> <br>
                     <p>
                         Description:  This returns all the stoic sayings <br>
                         Method: GET <br>
@@ -123,7 +129,7 @@
                 </div>
 
                 <div class="get-card">
-                   <a href="https://stoic-api.herokuapp.com/api/v1/sayings/1"><button type="button" id="doc-btn" class="btn btn-dark">GET by ID</button></a>  <br>
+                   <a href="https://stoic-api.herokuapp.com/api/v1/sayings/1" target="_blank"><button type="button" id="doc-btn" class="btn btn-dark">GET by ID</button></a>  <br>
                     <p>
                         Description:  This returns a specific stoic saying according to the id <br>
                         Method: GET <br>
@@ -133,7 +139,7 @@
                 </div>
 
                 <div class="get-card">
-                    <a href="https://stoic-api.herokuapp.com/api/v1/aurelius"><button type="button" id="doc-btn" class="btn btn-dark">GET by Author</button></a> <br>
+                    <a href="https://stoic-api.herokuapp.com/api/v1/aurelius" target="_blank"><button type="button" id="doc-btn" class="btn btn-dark">GET by Author</button></a> <br>
                     <p>
                         Description:  This returns all the sayings by each author. <br>
                         We have Aurelius, Seneca &  Epictetus <br>
@@ -143,7 +149,7 @@
                 </div>
 
                 <div class="get-card" style="margin-bottom: 5rem;">
-                    <a href="https://stoic-api.herokuapp.com/api/v1/random"><button type="button" id="doc-btn" class="btn btn-dark">GET random</button></a> <br>
+                    <a href="https://stoic-api.herokuapp.com/api/v1/random" target="_blank"><button type="button" id="doc-btn" class="btn btn-dark">GET random</button></a> <br>
                     <p>
                         Description:  This returns a random saying <br>
                         Method: GET <br>
@@ -186,8 +192,16 @@
 
         document.getElementById("quote").innerHTML = data.saying;
         document.getElementById("author").innerHTML = data.author;
+        document.getElementById("source").innerHTML = " from " + data.source;
 
-      });
+
+    
+      sayingValue=data.saying;
+      authorValue=data.author;
+
+      document.getElementById("share-link").href="https://twitter.com/intent/tweet?text=" + sayingValue + " - " + authorValue;  
+    
+    });
     </script>
 </body>
 </html>

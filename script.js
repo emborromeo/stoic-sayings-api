@@ -121,13 +121,13 @@ app.listen(port, () => console.log(`Listening on port ${port}..`));
 const sayings = [
     {
         author: 'Marcus Aurelius',
-        saying: 'The happiness of your life depends upon the quality of your thoughts.',
+        saying: 'The happiness of your life depends upon the quality of your thoughts',
         source: 'Meditations',
         id: 1
     },
     {
         author: 'Marcus Aurelius',
-        saying: 'Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.',
+        saying: 'Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth',
         source: 'Meditations',
         id: 2
     },
@@ -139,7 +139,7 @@ const sayings = [
     },
     {
         author: 'Seneca',
-        saying: 'Difficulties strengthen the mind, as labor does the body.',
+        saying: 'Difficulties strengthen the mind, as labor does the body',
         source: 'Letters from a Stoic',
         id: 5
     }
