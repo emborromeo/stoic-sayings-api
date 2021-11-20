@@ -1,23 +1,28 @@
 const express = require('express');
 const Joi = require('joi'); //used for validation
 let path = require('path')
+const cors = require('cors');
 
 const app = express();
+
 app.use(express.json());
  
+app.use(cors({
+    origin: '*'
+}));
 
 //Request Handlers
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
 //GET all 
-app.get('/api/v1/sayings', (req,res)=> {
+app.get('/api/v1/sayings', cors(), (req,res)=> {
     res.send(sayings);
 });
 
 //Get by id
-app.get('/api/v1/sayings/:id', (req, res) => {
+app.get('/api/v1/sayings/:id', cors(), (req, res) => {
     const saying = sayings.find(c => c.id === parseInt(req.params.id));
     
     if (!saying) res.status(404).send('oops... sorry, i cant find what you are looking for');
@@ -26,20 +31,20 @@ app.get('/api/v1/sayings/:id', (req, res) => {
 });
  
 //Get by Author
-app.get('/api/v1/seneca', (req,res)=> {
+app.get('/api/v1/seneca', cors(),  (req,res)=> {
     const seneca = sayings.filter(c => c.author === "Seneca");
     res.send(seneca);
 });
 
-app.get('/api/v1/aurelius', (req,res)=> {
+app.get('/api/v1/aurelius', cors(), (req,res)=> {
     const aurelius = sayings.filter(c => c.author === "Marcus Aurelius");
     res.send(aurelius);
 });
-app.get('/api/v1/epictetus', (req,res)=> {
+app.get('/api/v1/epictetus', cors(), (req,res)=> {
     const epictetus = sayings.filter(c => c.author === "Epictetus");
     res.send(epictetus);
 });
-app.get('/api/v1/zeno', (req,res)=> {
+app.get('/api/v1/zeno', cors(), (req,res)=> {
     const zeno = sayings.filter(c => c.author === "Zeno");
     res.send(zeno);
 });
