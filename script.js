@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(express.json());
- 
+
 app.use(cors({
     origin: '*'
 }));
@@ -16,7 +16,7 @@ app.get('/', cors(), (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-//GET all 
+//GET all
 app.get('/api/v1/sayings', cors(), (req,res)=> {
     res.send(sayings);
 });
@@ -24,12 +24,12 @@ app.get('/api/v1/sayings', cors(), (req,res)=> {
 //Get by id
 app.get('/api/v1/sayings/:id', cors(), (req, res) => {
     const saying = sayings.find(c => c.id === parseInt(req.params.id));
-    
+
     if (!saying) res.status(404).send('oops... sorry, i cant find what you are looking for');
 
     res.send(saying);
 });
- 
+
 //Get by Author
 app.get('/api/v1/seneca', cors(),  (req,res)=> {
     const seneca = sayings.filter(c => c.author === "Seneca");
@@ -59,7 +59,7 @@ app.get('/api/v1/random', cors(),  (req,res)=> {
 
 /*
 app.post('/api/sayings', (req, res)=> {
- 
+
 const { error } = validatesaying(req.body);
 if (error){
 res.status(400).send(error.details[0].message)
@@ -79,38 +79,38 @@ res.send(saying);
 app.put('/api/sayings/:id', (req, res) => {
     const saying = sayings.find(c=> c.id === parseInt(req.params.id));
     if (!saying) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;">Not Found!! </h2>');
-    
+
     const { error } = validatesaying(req.body);
     if (error){
     res.status(400).send(error.details[0].message);
     return;
     }
-    
+
     saying.title = req.body.title;
     res.send(saying);
 });
- 
+
 
 //DELETE Request Handler
 
 /*
 app.delete('/api/sayings/:id', (req, res) => {
- 
+
 const saying = sayings.find( c=> c.id === parseInt(req.params.id));
 if(!saying) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;"> Not Found!! </h2>');
- 
+
 const index = sayings.indexOf(saying);
 sayings.splice(index,1);
- 
+
 res.send(saying);
 });
- 
+
 function validatesaying(saying) {
 const schema = {
 title: Joi.string().min(3).required()
 };
 return Joi.validate(saying, schema);
- 
+
 }
  */
 //PORT ENVIRONMENT VARIABLE
@@ -119,6 +119,7 @@ app.listen(port, () => console.log(`Listening on port ${port}..`));
 
 
 const sayings = [
+    //MARCUS AURELIUS
     {
         author: 'Marcus Aurelius',
         saying: 'The happiness of your life depends upon the quality of your thoughts',
@@ -135,12 +136,38 @@ const sayings = [
         author: 'Marcus Aurelius',
         saying: 'When you arise in the morning think of what a privilege it is to be alive, to think, to enjoy, to love ...',
         source: 'Meditations',
-        id: 3   
+        id: 3
     },
+    //SENECA
     {
         author: 'Seneca',
         saying: 'Difficulties strengthen the mind, as labor does the body',
         source: 'Letters from a Stoic',
+        id: 4
+    },
+    //EPICTETUS
+    {
+        author: 'Epictetus',
+        saying: 'First say to yourself what you would be; and then do what you have to do',
+        source: 'The Art of Living',
         id: 5
-    }
+    },
+    {
+        author: 'Epictetus',
+        saying: 'It is impossible for a man to learn what he thinks he already knows',
+        source: 'The Art of Living',
+        id: 6
+    },
+    {
+        author: 'Epictetus',
+        saying: 'Seek not the good in external things;seek it in yourselves',
+        source: 'The Art of Living',
+        id: 7
+    },
+    {
+        author: 'Epictetus',
+        saying: 'If you would be a reader, read; if a writer, write',
+        source: 'The Art of Living',
+        id: 8
+    },
 ]
