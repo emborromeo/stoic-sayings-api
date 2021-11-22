@@ -12,13 +12,14 @@
     <li>GET by Author</li>
     <li>GET random</li>
     <li>Twitter share button</li>
-  <ul>
+  </ul>
 
 <h3>Tools & Technologies used</h3>
-
+  <ul>
     <li>Nodejs</li>
     <li>Expressjs</li>
     <li>JS</li>
     <li>HTML</li>
     <li>CSS</li>
     <li>Bootstrap</li>
+  </ul>
